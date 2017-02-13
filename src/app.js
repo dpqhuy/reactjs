@@ -2,25 +2,27 @@ import React from 'react'
 import {Link, IndexLink, withRouter} from 'react-router'
 
 class App extends React.Component {
-	componentDidMount() {
-	    this.props.router.setRouteLeaveHook(this.props.route, () => {
-	        return 'Are you want to leave?'
-	    })
-  	}
 
    render() {
       return (
-         <div>
-            <ul>
-               <li><IndexLink activeStyle={{ color: 'orange' }} to='/'>Home</IndexLink></li>
-               <li><Link activeStyle={{ color: 'orange' }} to='/tasks'>Task List</Link></li>
-               <li><Link activeStyle={{ color: 'orange' }} to='create'>Create Task</Link></li>
-            </ul>
-				
-           {this.props.children}
+      	<div>
+	         <div>
+	            <ul className="nav" style={{
+					    "listStyleType": "none",
+					    "height": "40px",
+					    "margin": 0,
+    					"padding": 0,
+    					"overflow": "hidden",
+					}}>
+	               <li><IndexLink activeStyle={{ color: 'orange' }} to='/'>Home</IndexLink></li>
+	               <li><Link activeStyle={{ color: 'orange' }} to='/tasks'>Task List</Link></li>
+	               <li><Link activeStyle={{ color: 'orange' }} to='create'>Create Task</Link></li>
+	            </ul>
+	           {this.props.children}
+	         </div>
          </div>
       )
    }
 }
 
-export default withRouter(App);
+export default App;

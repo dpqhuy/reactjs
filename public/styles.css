@@ -7,3 +7,19 @@
 	font-size: 4em;
 	color: blue;
 }
+
+ul.nav {
+	background-color: #333;
+}
+
+ul.nav > li {
+	float: left;
+}
+
+ul.nav li a {
+    display: block;
+    color: white;
+    text-align: center;
+    padding: 14px 16px;
+    text-decoration: none;
+}
