@@ -1,0 +1,9 @@
+.taskForm {
+    display: flex;
+    flex-direction: row;
+}
+.task {
+	font-style: italic;
+	font-size: 4em;
+	color: blue;
+}

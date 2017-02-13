@@ -1,3 +1,12 @@
+import React from 'react';
+import {render} from 'react-dom';
+import App from './app'
+import Home from './home'
+import TaskList from './task-list'
+import TaskCreate from './task-create'
+import Task from './task'
+import { Router, Route, browserHistory, IndexRoute  } from 'react-router'
+
 const user = {
     firstName : 'Huy',
     lastName : 'Dinh'
@@ -105,7 +114,20 @@ class Content extends React.Component {
   }
 }
 
-ReactDOM.render(<Content/>, document.getElementById("root"));
+var tasks = [
+{id:0, text:"task 1"},
+{id:1, text:"task 2"}
+];
 
-/*ReactDOM.render(<ParentComp parentText="Parent" childrenText="Children"/>,
-               document.getElementById("subComp"));*/
+//render(<Content/>, document.getElementById("root"));
+render((
+   <Router history = {browserHistory}>
+      <Route path = "/" component = {App}>
+         <IndexRoute component = {Home} />
+         <Route path = "tasks" component = {TaskList} tasks = {tasks} />
+         <Route path = "task/:taskId" component = {Task} />
+         <Route path = "create" component = {TaskCreate} />
+      </Route>
+   </Router>
+  
+), document.getElementById('root'))
