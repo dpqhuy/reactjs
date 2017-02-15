@@ -5,6 +5,9 @@ import Home from './home'
 import TaskList from './task-list'
 import TaskCreate from './task-create'
 import Task from './task'
+
+import MaterialUi from './material-ui'
+
 import { Router, Route, browserHistory, IndexRoute  } from 'react-router'
 
 const user = {
@@ -131,3 +134,6 @@ render((
    </Router>
   
 ), document.getElementById('root'))
+/*render(
+  <MaterialUi />,
+  document.getElementById('root'));*/

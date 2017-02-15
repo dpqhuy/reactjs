@@ -11,9 +11,11 @@
   "author": "",
   "license": "ISC",
   "dependencies": {
+    "material-ui": "^0.17.0",
     "react": "^15.4.2",
     "react-dom": "^15.4.2",
-    "react-route": "^1.0.3"
+    "react-route": "^1.0.3",
+    "react-tap-event-plugin": "^2.0.1"
   },
   "devDependencies": {
     "babel-core": "^6.22.1",
@@ -30,6 +32,7 @@
     "eslint-plugin-import": "^2.2.0",
     "eslint-plugin-jsx-a11y": "^4.0.0",
     "eslint-plugin-react": "^6.9.0",
+    "redux-devtools": "^3.3.2",
     "webpack": "^1.12.15",
     "webpack-dev-server": "~1.14.*"
   }
