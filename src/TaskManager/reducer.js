@@ -6,7 +6,8 @@ const initialState = {
     id:0,
     name: 'task 1',
     effort: 100,
-    completed: true
+    completed: true,
+    created: new Date()
   }]
 }
 

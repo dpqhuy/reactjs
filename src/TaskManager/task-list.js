@@ -29,8 +29,6 @@ class TaskListComponent extends React.Component {
 
 //Generate a container app by Mapping state and dispatch to props
 const mapStateToProps = (state) => {
-   console.log("TaskList mapStateToProps")
-   console.log(state);
   return {
     tasks: state.main.tasks,
   }

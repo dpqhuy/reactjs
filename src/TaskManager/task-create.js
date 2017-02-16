@@ -17,7 +17,8 @@ class TaskCreateComponent extends React.Component {
     this.props.onAdd({
       name:this.refs.name.value, 
       effort: this.refs.effort.value, 
-      completed:(this.refs.completed.checked)
+      completed:(this.refs.completed.checked),
+      created: new Date()
     });
     alert("Added new task successfuly!");
     this.props.router.push('/tasks');

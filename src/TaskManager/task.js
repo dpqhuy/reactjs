@@ -5,34 +5,37 @@ class TaskComponent extends React.Component {
 
 	constructor(props) {
 		super(props);
-		this.tasks = [
-			{id:0, text:"task 1"},
-			{id:1, text:"task 2"}
-			];
+		this.state = {task:{}};
 	}
 
 	findTaskById(taskId) {
-	  for (var i = 0; i < this.tasks.length; i++) {
-	      if(this.tasks[i].id == taskId) {
-	        return this.tasks[i];
+		let tasks = this.props.tasks;
+	  for (var i = 0; i < tasks.length; i++) {
+	      if(tasks[i].id == taskId) {
+	        return tasks[i];
 	      }
 	  }
 	}
 	componentWillMount() {
 	    this.setState({
 	      // route components are rendered with useful information, like URL params
-	      task: this.findTaskById(this.props.params.taskId)
+	      task: this.findTaskById(this.props.taskId)
 	    })
   	}
 	render() {
-		return (<div className="task">
-          {this.state.task.text}
-      </div>)
+		return (
+			<div className="task">
+			<p>Name: {this.state.task.name}</p>
+			<p>Effort: {this.state.task.effort} hour(s)</p>
+			<p>Completed: {this.state.task.completed ? "true" : "false"}</p>
+			<p>Created: {this.state.task.created.toLocaleTimeString()}</p>
+      	</div>)
 	}
 }
 
 //Generate a container app by Mapping state and dispatch to props
 const mapStateToProps = (state) => {
+	console.log(state);
   return {
     tasks: state.main.tasks,
   }
