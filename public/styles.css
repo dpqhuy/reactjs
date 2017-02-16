@@ -1,11 +1,19 @@
 .taskForm {
-    display: flex;
-    flex-direction: row;
+    /*display: flex;
+    flex-direction: column;*/
 }
 .task {
 	font-style: italic;
 	font-size: 4em;
 	color: blue;
+}
+.task-completed {
+	text-decoration: line-through;
+	color: red;
+}
+.task-incompleted {
+	text-decoration: none;
+	color: black;
 }
 
 ul.nav {

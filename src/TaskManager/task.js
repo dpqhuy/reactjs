@@ -1,6 +1,7 @@
 import React from 'react'
+import {connect} from 'react-redux'
 
-class Task extends React.Component {
+class TaskComponent extends React.Component {
 
 	constructor(props) {
 		super(props);
@@ -29,5 +30,14 @@ class Task extends React.Component {
       </div>)
 	}
 }
+
+//Generate a container app by Mapping state and dispatch to props
+const mapStateToProps = (state) => {
+  return {
+    tasks: state.main.tasks,
+  }
+}
+
+const Task = connect(mapStateToProps)(TaskComponent)
 
 export default Task;

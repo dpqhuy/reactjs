@@ -1,12 +1,20 @@
 import React from 'react'
 import {Link, IndexLink, withRouter} from 'react-router'
+import { connect } from 'react-redux'
+
+import taskActionCreators from './action-creators'
 
 class App extends React.Component {
+
+	handleAddTask(task) {
+		this.props.onAdd(task);
+	}
 
    render() {
       return (
       	<div>
 	         <div>
+	         	<h1 style={{color: 'red'}}>Task Manager</h1>
 	            <ul className="nav" style={{
 					    "listStyleType": "none",
 					    "height": "40px",
@@ -24,5 +32,19 @@ class App extends React.Component {
       )
    }
 }
+
+// Generate a container app by Mapping state and dispatch to props
+// const mapStateToProps = (state) => {
+//   return {
+//     tasks: state.tasks,
+//   }
+// }
+// const mapDispatchToProps = (dispatch) => {
+//   return {
+//     onAdd: (task) => dispatch(taskActionCreators.addTask(task)),
+//     onUpdate: (task) => dispatch(taskActionCreators.updateTask(task)),
+//   }
+// }
+// const TaskManagerContainer = connect(mapStateToProps, mapDispatchToProps)(App)
 
 export default App;

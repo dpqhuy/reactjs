@@ -1,10 +1,15 @@
 import React from 'react';
 import {render} from 'react-dom';
-import App from './app'
-import Home from './home'
-import TaskList from './task-list'
-import TaskCreate from './task-create'
-import Task from './task'
+import { Provider } from 'react-redux'
+
+
+import App from './TaskManager/app'
+import Home from './TaskManager/home'
+import TaskListView from './TaskManager/view/TaskListView'
+import TaskView from './TaskManager/view/TaskView'
+import TaskCreate from './TaskManager/task-create'
+
+import taskStore from './TaskManager/task-store'
 
 import MaterialUi from './material-ui'
 
@@ -123,7 +128,7 @@ var tasks = [
 ];
 
 //render(<Content/>, document.getElementById("root"));
-render((
+/*render((
    <Router history = {browserHistory}>
       <Route path = "/" component = {App}>
          <IndexRoute component = {Home} />
@@ -133,7 +138,22 @@ render((
       </Route>
    </Router>
   
-), document.getElementById('root'))
+), document.getElementById('root'))*/
+
+render(
+  <Provider store={taskStore}>
+    <Router history = {browserHistory}>
+        <Route path = "/" component = {App}>
+           <IndexRoute component = {Home} />
+           <Route path = "tasks" component = {TaskListView}/>
+           <Route path = "task/:taskId" component = {TaskView} />
+           <Route path = "create" component = {TaskCreate} />
+        </Route>
+     </Router>
+   </Provider>,
+  document.getElementById('root')
+);
+
 /*render(
   <MaterialUi />,
   document.getElementById('root'));*/
