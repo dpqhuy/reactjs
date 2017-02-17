@@ -1,4 +1,4 @@
 export default {
-  ADD_TASK: 'add task',
-  UPDATE_TASK: 'update task'
+	ADD_TASK: 'add task',
+	UPDATE_TASK: 'update task'
 };
