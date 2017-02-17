@@ -4,7 +4,11 @@ import TaskList from '../task-list'
 
 class TaskListView extends React.Component {
 	render() {
-		return (<TaskList />)
+		return (
+			<div>
+				<h1>Task List...</h1>
+				<TaskList />
+			</div>)
 	}
 }
 

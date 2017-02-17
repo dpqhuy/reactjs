@@ -1,5 +1,7 @@
-import constants from './constants';
 import { combineReducers } from 'redux';
+import { reducer as formReducer } from 'redux-form';
+
+import constants from './constants';
 
 const initialState = {
   tasks: [{
@@ -15,9 +17,18 @@ const reducer = (state = initialState, action) => {
   const { tasks } = state;
   switch (action.type) {
     case constants.ADD_TASK:
-      action.task.id = tasks.length;
-      tasks.push(action.task);
-      return state;
+      // action.task.id = tasks.length;
+      // tasks.push(action.task);
+      // return state;
+
+      return { 
+        tasks: [
+          ...tasks,
+          { ...action.task,
+            id: tasks.length}
+            ]
+      };
+
 
     case constants.UPDATE_TASK:
       for(var i=0; i< tasks.length; i++) {
@@ -32,6 +43,6 @@ const reducer = (state = initialState, action) => {
   }
 };
 
-const taskReducer = combineReducers({main:reducer});
+const taskReducer = combineReducers( { main:reducer, form: formReducer } );
 
 export default taskReducer;

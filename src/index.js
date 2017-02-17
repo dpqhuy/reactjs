@@ -1,19 +1,17 @@
 import React from 'react';
 import {render} from 'react-dom';
-import { Provider } from 'react-redux'
+import { Provider } from 'react-redux';
+import { Router, Route, browserHistory, IndexRoute  } from 'react-router';
 
+import App from './TaskManager/app';
+import Home from './TaskManager/home';
+import TaskListView from './TaskManager/view/TaskListView';
+import TaskView from './TaskManager/view/TaskView';
+import TaskCreateView from './TaskManager/view/TaskCreateView';
 
-import App from './TaskManager/app'
-import Home from './TaskManager/home'
-import TaskListView from './TaskManager/view/TaskListView'
-import TaskView from './TaskManager/view/TaskView'
-import TaskCreate from './TaskManager/task-create'
+import taskStore from './TaskManager/task-store';
 
-import taskStore from './TaskManager/task-store'
-
-import MaterialUi from './material-ui'
-
-import { Router, Route, browserHistory, IndexRoute  } from 'react-router'
+import MaterialUi from './material-ui';
 
 const user = {
     firstName : 'Huy',
@@ -147,7 +145,7 @@ render(
            <IndexRoute component = {Home} />
            <Route path = "tasks" component = {TaskListView}/>
            <Route path = "task/:taskId" component = {TaskView} />
-           <Route path = "create" component = {TaskCreate} />
+           <Route path = "create" component = {TaskCreateView} />
         </Route>
      </Router>
    </Provider>,

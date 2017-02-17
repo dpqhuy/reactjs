@@ -19,7 +19,6 @@ class TaskListComponent extends React.Component {
 
       return (
          <div>
-            <h1>Task List...</h1>
             { tasks.length && textNodes }
             <h2 style={{color:"blue"}}>Total effort: {sum} hour(s)</h2>
          </div>

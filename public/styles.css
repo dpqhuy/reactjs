@@ -1,3 +1,12 @@
+form div {
+	margin-bottom: 10px;
+}
+
+form > div > span {
+	font-weight: 700;
+	margin-left: 10px;
+	color: #700;
+}
 .taskForm {
     /*display: flex;
     flex-direction: column;*/
