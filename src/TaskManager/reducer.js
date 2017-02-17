@@ -1,5 +1,6 @@
 import { combineReducers } from 'redux';
 import { reducer as formReducer } from 'redux-form';
+import { routerReducer } from 'react-router-redux';
 
 import constants from './constants';
 
@@ -43,6 +44,6 @@ const reducer = (state = initialState, action) => {
   }
 };
 
-const taskReducer = combineReducers( { main:reducer, form: formReducer } );
+const taskReducer = combineReducers( { routing: routerReducer, main:reducer, form: formReducer } );
 
 export default taskReducer;

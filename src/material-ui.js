@@ -10,7 +10,7 @@ injectTapEventPlugin();
 
 const muiTheme = getMuiTheme({
   palette: {
-    textColor: '#45058e',
+    textColor: '#000000',
   },
   appBar: {
     height: 50,
@@ -18,8 +18,8 @@ const muiTheme = getMuiTheme({
 });
 
 const MaterialUi = () => (
-  <MuiThemeProvider muiTheme={getMuiTheme(darkBaseTheme)}>
-    <AppBar title="My AppBar" />
+  <MuiThemeProvider muiTheme={muiTheme}>
+    <AppBar title="My AppBar" titleStyle={{'color':'#fff000'}}/>
   </MuiThemeProvider>
 );
 
