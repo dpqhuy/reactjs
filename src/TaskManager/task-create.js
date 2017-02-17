@@ -1,6 +1,11 @@
 import React from 'react';
 import { connect } from 'react-redux'
 import { Field, reduxForm } from 'redux-form';
+import TextField from 'material-ui/TextField';
+import Checkbox from 'material-ui/Checkbox';
+import lightBaseTheme from 'material-ui/styles/baseThemes/lightBaseTheme';
+import MuiThemeProvider from 'material-ui/styles/MuiThemeProvider';
+import getMuiTheme from 'material-ui/styles/getMuiTheme';
 
 import taskActionCreators from './action-creators'
 import TaskList from './task-list'
@@ -64,7 +69,7 @@ class TaskCreate extends React.Component {
    }
 }
 
-const required = value => value ? undefined : 'Required';
+/*const required = value => value ? undefined : 'Required';
 const number = value => value && isNaN(Number(value)) ? 'Must be a number' : undefined;
 const min1 = value => value && Number(value) < 1 ? 'Min is 1' : undefined;
 
@@ -74,6 +79,40 @@ const renderField = ({ input, label, type, meta: { touched, error, warning } }) 
     <input {...input} placeholder={label} type={type}/>
     {touched && ((error && <span>{error}</span>) || (warning && <span>{warning}</span>))}
   </div>
+)*/
+
+const validate = values => {
+  const errors = {}
+  const requiredFields = [ 'name', 'effort' ]
+  requiredFields.forEach(field => {
+    if (!values[ field ]) {
+      errors[ field ] = 'Required';
+    }
+  })
+  if (values.effort && isNaN(Number(values.effort))) {
+    errors.effort = 'Must be a number';
+  }
+
+  if (!errors.effort && Number(values.effort) < 1) {
+    errors.effort = 'Must be equal or larger than 1';
+  }
+
+  return errors;
+}
+
+const renderTextField = ({ input, label, meta: { touched, error }, ...custom }) => (
+  <TextField hintText={label}
+    floatingLabelText={label}
+    errorText={touched && error}
+    {...input}
+    {...custom}
+  />
+)
+
+const renderCheckbox = ({ input, label }) => (
+  <Checkbox label={label}
+    checked={input.value ? true : false}
+    onCheck={input.onChange}/>
 )
 
 class TaskForm extends React.Component {
@@ -82,24 +121,30 @@ class TaskForm extends React.Component {
     console.log(this.props);
     const { handleSubmit, pristine } = this.props;
     return (
-      <form onSubmit={ handleSubmit }>
-        
-        <Field label="Name" name="name" component={renderField} type="text" validate={required}/>
-      
-        <Field label="Effort" name="effort" component={renderField} type="text" validate={[required, number, min1]}/>
-      
-        <Field label="Completed" name="completed" component={renderField} type="checkbox"/>
-        <div>
-          <button type="submit" disabled={pristine}>Add</button>
-        </div>
-      </form>
+      <MuiThemeProvider muiTheme={getMuiTheme(lightBaseTheme)}>
+        <form onSubmit={ handleSubmit }>
+          <div>
+            <Field label="Name" name="name" component={renderTextField}/>
+          </div>
+          <div>
+            <Field label="Effort" name="effort" component={renderTextField} />
+          </div>
+          <div>
+            <Field label="Completed" name="completed" component={renderCheckbox} />
+          </div>
+          <div>
+            <button type="submit" disabled={pristine}>Add</button>
+          </div>
+        </form>
+      </MuiThemeProvider>
     );
   }
 }
 
 // Decorate the form component
 TaskForm = reduxForm({
-  form: 'task' // a unique name for this form
+  form: 'task', // a unique name for this form
+  validate
 })(TaskForm);
 
 // Generate a container app by Mapping state and dispatch to props
