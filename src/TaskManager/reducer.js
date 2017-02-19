@@ -35,6 +35,7 @@ const reducer = (state = initialState, action) => {
       for(var i=0; i< tasks.length; i++) {
         if(action.task.id == tasks[i].id) {
           tasks[i] = action.task;
+          tasks[i].modified = new Date();
         }
       }
       return state;
