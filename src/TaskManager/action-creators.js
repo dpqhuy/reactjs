@@ -19,6 +19,16 @@ const taskActionCreators = {
       type: constants.UPDATE_TASK,
       task: task
     };
+  },
+
+  /**
+   * @param  {int} taskId to be deleted
+   */
+  deleteTask(taskId) {
+    return {
+      type: constants.DELETE_TASK,
+      taskId: taskId
+    };
   }
 };
 

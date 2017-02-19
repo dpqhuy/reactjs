@@ -40,6 +40,14 @@ const reducer = (state = initialState, action) => {
       }
       return state;
 
+    case constants.DELETE_TASK:
+      for(var i=0; i< tasks.length; i++) {
+        if(action.taskId == tasks[i].id) {
+          tasks.splice(i, 1);
+        }
+      }
+      return state;
+
     default:
       return state;
   }
