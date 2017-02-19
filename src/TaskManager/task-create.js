@@ -20,6 +20,7 @@ class TaskCreate extends React.Component {
       created: new Date()
     };
     dispatch(taskActionCreators.addTask(task));
+    alert("Add task successfully");
     dispatch(push('/tasks'));
     
   }
