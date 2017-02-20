@@ -30,7 +30,9 @@ class TaskListComponent extends React.Component {
       const {handleDelete} = this;
 		const textNodes = tasks.map(function(task, index) {
             const onClickHandle = (e) => {
-               handleDelete(task.id);
+               if(confirm('Are you sure to delete this task?')) {
+                  handleDelete(task.id);
+               }
             }
 
             sum += parseInt(task.effort);
